@@ -1,0 +1,19 @@
+.glitch {
+  animation: glitch 0.5s linear infinite;
+}
+
+@keyframes glitch {
+  0%,
+  100% {
+    text-shadow: -2.5px -2.5px 0 #1f640a, 2.5px 2.5px 0 #f00;
+  }
+  25% {
+    text-shadow: 2.5px 2.5px 0 #1f640a, -2.5px -2.5px 0 #f00;
+  }
+  50% {
+    text-shadow: 2.5px -2.5px 0 #1f640a, -2.5px 2.5px 0 #f00;
+  }
+  75% {
+    text-shadow: 2.5px 2.5px 0 #1f640a, 2.5px -2.5px 0 #f00;
+  }
+}

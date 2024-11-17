@@ -1,7 +1,6 @@
+import AuthLayout from '@/components/layout/AuthLayout'
 import { SITE_NAME } from '@/constants/seo.constants'
 import { Metadata } from 'next'
-import './globals.css'
-import { Providers } from './providers'
 
 export const metadata: Metadata = {
 	title: {
@@ -11,16 +10,10 @@ export const metadata: Metadata = {
 	description: 'Best online cinema in the world',
 }
 
-export default function RootLayout({
+export default function MainLayout({
 	children,
 }: Readonly<{
 	children: React.ReactNode
 }>) {
-	return (
-		<html lang='en'>
-			<body>
-				<Providers>{children}</Providers>
-			</body>
-		</html>
-	)
+	return <AuthLayout>{children}</AuthLayout>
 }
