@@ -15,17 +15,8 @@ const options: CreateAxiosDefaults = {
 	withCredentials: true,
 }
 
-const optionsMultipart: CreateAxiosDefaults = {
-	baseURL: 'http://localhost:7864/api',
-	headers: {
-		'Content-Type': 'multipart/form-data',
-	},
-	withCredentials: true,
-}
-
 const axiosClassic = axios.create(options)
 const axiosWithAuth = axios.create(options)
-const axiosMultipart = axios.create(optionsMultipart)
 
 axiosWithAuth.interceptors.request.use(config => {
 	const accessToken = getAccessToken()
@@ -61,4 +52,4 @@ axiosWithAuth.interceptors.response.use(
 	}
 )
 
-export { axiosClassic, axiosMultipart, axiosWithAuth }
+export { axiosClassic, axiosWithAuth }

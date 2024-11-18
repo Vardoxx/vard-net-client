@@ -1,6 +1,6 @@
 import { ButtonHTMLAttributes } from 'react'
 
-const CustomBtn: React.FC<ButtonHTMLAttributes<HTMLButtonElement>> = ({
+const Btn: React.FC<ButtonHTMLAttributes<HTMLButtonElement>> = ({
 	title,
 	type,
 	disabled,
@@ -12,4 +12,4 @@ const CustomBtn: React.FC<ButtonHTMLAttributes<HTMLButtonElement>> = ({
 	)
 }
 
-export default CustomBtn
+export default Btn

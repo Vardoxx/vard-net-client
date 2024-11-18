@@ -1,12 +1,12 @@
 'use client'
 
 import { URL_PAGE } from '@/cfg/url.cfg'
-import CustomBtn from '@/components/ui/CustomBtn'
-import CustomInput from '@/components/ui/CustomInput'
+import CustomBtn from '@/components/ui/Btn'
+import Input from '@/components/ui/Input'
 import { emailRegex } from '@/constants/regex.constants'
 import { authService } from '@/services/auth.service'
 import { ILoginForm } from '@/types/auth.types'
-import { InputType } from '@/types/custom-input.types'
+import { InputType } from '@/types/input.types'
 import { useMutation } from '@tanstack/react-query'
 import { useRouter } from 'next/navigation'
 import { useState } from 'react'
@@ -78,7 +78,7 @@ const Login = () => {
 						pattern: { value: emailRegex, message: 'Почта не корректна!' },
 					}}
 					render={({ field }) => (
-						<CustomInput
+						<Input
 							{...field}
 							placeholder='Почта'
 							type='text'
@@ -105,7 +105,7 @@ const Login = () => {
 						},
 					}}
 					render={({ field }) => (
-						<CustomInput
+						<Input
 							{...field}
 							placeholder='Пароль'
 							type={showPass}

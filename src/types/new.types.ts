@@ -9,8 +9,10 @@ export interface INewResponse {
 	checkStatus: CheckStatus
 }
 
+export type TTag = 'популярное' | 'политика' | 'игры' | 'блогеры' | 'it'
+
 export interface INewRequire {
-	img: File
+	img: File[]
 	title: string
 	description: string
 	tag: string[]

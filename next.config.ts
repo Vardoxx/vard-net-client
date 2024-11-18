@@ -2,7 +2,7 @@ import { URL_PAGE } from '@/cfg/url.cfg'
 import type { NextConfig } from 'next'
 
 const nextConfig: NextConfig = {
-	trailingSlash: true,
+	trailingSlash: false,
 	async redirects() {
 		return [
 			{

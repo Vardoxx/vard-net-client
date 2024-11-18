@@ -1,8 +1,8 @@
-import { CustomInputProps } from '@/types/custom-input.types'
+import { InputProps } from '@/types/input.types'
 import { forwardRef } from 'react'
 
 // eslint-disable-next-line react/display-name
-const CustomInput = forwardRef<HTMLInputElement, CustomInputProps>(
+const Input = forwardRef<HTMLInputElement, InputProps>(
 	({ type, value, onChange, placeholder, dirty }, ref) => {
 		return (
 			<input
@@ -18,4 +18,4 @@ const CustomInput = forwardRef<HTMLInputElement, CustomInputProps>(
 	}
 )
 
-export default CustomInput
+export default Input

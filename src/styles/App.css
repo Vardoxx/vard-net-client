@@ -200,3 +200,26 @@
 .title-shadow {
 	text-shadow: 3px 3px 0px #000000;
 }
+
+.tags {
+	width: 300px;
+	height: 200px;
+	padding: 10px;
+	border: 1px solid #ccc;
+	border-radius: 5px;
+	font-size: 14px;
+	cursor: pointer;
+}
+
+.tags option {
+	background-color: #f8f9fa;
+	color: #333;
+}
+
+.tags option:hover {
+	background-color: #e9ecef;
+}
+
+.tags[multiple] {
+	height: auto;
+}
