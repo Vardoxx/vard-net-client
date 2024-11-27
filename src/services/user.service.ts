@@ -1,18 +1,10 @@
-import { IUser, TypeUserForm } from '@/types/auth.types'
+import { IProfile, TypeUserForm } from '@/types/auth.types'
 
 import { axiosWithAuth } from '@/api/interceptors'
 
-export interface IProfileResponse {
-	user: IUser
-	statistics: {
-		label: string
-		value: string
-	}[]
-}
-
 class UserService {
 	async getProfile() {
-		const response = await axiosWithAuth.get<IProfileResponse>('/user/profile')
+		const response = await axiosWithAuth.get<IProfile>('/user/profile')
 		return response.data
 	}
 

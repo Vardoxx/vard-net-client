@@ -5,7 +5,9 @@ import CustomBtn from '@/components/ui/Btn'
 import { MenuProps, options } from '@/constants/tag-select.constants'
 import { newService } from '@/services/new.service'
 import { INewRequire } from '@/types/new.types'
+import { validateFile } from '@/utils/validateFile'
 import {
+	Button,
 	Checkbox,
 	FormControl,
 	InputLabel,
@@ -21,6 +23,7 @@ import { useRouter } from 'next/navigation'
 
 import { useState } from 'react'
 import { Controller, useForm } from 'react-hook-form'
+import { BiUpload } from 'react-icons/bi'
 import { toast } from 'sonner'
 
 const NewCreator = () => {
@@ -31,6 +34,7 @@ const NewCreator = () => {
 		control,
 		handleSubmit,
 		reset,
+		clearErrors,
 		formState: { errors },
 	} = useForm<INewRequire>({
 		defaultValues: {
@@ -42,6 +46,10 @@ const NewCreator = () => {
 	})
 
 	const onSubmit = (data: INewRequire) => {
+		if (data.tag.length !== 0) {
+			clearErrors('tag')
+			console.log(data.tag.length)
+		}
 		console.log(data)
 		mutate({ ...data, img: data.img })
 	}
@@ -64,6 +72,9 @@ const NewCreator = () => {
 	const [personName, setPersonName] = useState<string[]>([])
 
 	const handleChange = (event: SelectChangeEvent<typeof personName>) => {
+		if (event) {
+			clearErrors('tag')
+		}
 		const {
 			target: { value },
 		} = event
@@ -77,14 +88,28 @@ const NewCreator = () => {
 		>
 			<div className='min-h-6'>
 				{errors.img && <p className='text-red-600'>{errors.img.message}</p>}
-				<input
-					{...register('img', {
-						required: 'Выберите картинку!',
-						// validate: value =>
-						// 	value ? validateFile(value, { required: true }) : undefined,
-					})}
-					type='file'
-				/>
+				<Button
+					style={{
+						display: 'flex',
+						alignItems: 'center',
+						justifyContent: 'center',
+					}}
+					component='label'
+					variant='contained'
+					tabIndex={-1}
+					startIcon={<BiUpload />}
+				>
+					Выберите картинку JPG или PNG
+					<input
+						{...register('img', {
+							required: 'Выберите картинку',
+							validate: value => validateFile(value as File[]),
+						})}
+						style={{ opacity: '0', width: 0 }}
+						type='file'
+						multiple
+					/>
+				</Button>
 			</div>
 
 			<div>
@@ -104,7 +129,29 @@ const NewCreator = () => {
 						},
 					}}
 					render={({ field }) => (
-						<TextField {...field} label='Название' type='text' fullWidth />
+						<TextField
+							{...field}
+							label='Название'
+							type='text'
+							fullWidth
+							sx={
+								errors.title
+									? {
+											'& .MuiOutlinedInput-root': {
+												'& fieldset': {
+													borderColor: 'red',
+												},
+												'&:hover fieldset': {
+													borderColor: 'red',
+												},
+												'&.Mui-focused fieldset': {
+													borderColor: 'red',
+												},
+											},
+									  }
+									: null
+							}
+						/>
 					)}
 				/>
 			</div>
@@ -132,6 +179,23 @@ const NewCreator = () => {
 							fullWidth
 							minRows={5}
 							multiline
+							sx={
+								errors.description
+									? {
+											'& .MuiOutlinedInput-root': {
+												'& fieldset': {
+													borderColor: 'red', // Цвет рамки по умолчанию
+												},
+												'&:hover fieldset': {
+													borderColor: 'red', // Цвет при наведении
+												},
+												'&.Mui-focused fieldset': {
+													borderColor: 'red', // Цвет при фокусе
+												},
+											},
+									  }
+									: null
+							}
 						/>
 					)}
 				/>
@@ -145,7 +209,26 @@ const NewCreator = () => {
 				</div>
 			</div>
 
-			<FormControl fullWidth>
+			<FormControl
+				fullWidth
+				sx={
+					errors.tag
+						? {
+								'& .MuiOutlinedInput-root': {
+									'& fieldset': {
+										borderColor: 'red', // Цвет рамки по умолчанию
+									},
+									'&:hover fieldset': {
+										borderColor: 'red', // Цвет при наведении
+									},
+									'&.Mui-focused fieldset': {
+										borderColor: 'red', // Цвет при фокусе
+									},
+								},
+						  }
+						: null
+				}
+			>
 				<InputLabel id='demo-multiple-checkbox-label'>Теги</InputLabel>
 				<Select
 					{...register('tag', { required: 'Выберите хотя-бы один тег!' })}
@@ -168,7 +251,7 @@ const NewCreator = () => {
 				</Select>
 			</FormControl>
 
-			<CustomBtn title='Войти' type='submit' />
+			<CustomBtn title='Создать' type='submit' />
 		</form>
 	)
 }

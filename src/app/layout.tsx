@@ -8,7 +8,6 @@ export const metadata: Metadata = {
 		default: SITE_NAME,
 		template: `%s | ${SITE_NAME}`,
 	},
-	description: 'Best online cinema in the world',
 }
 
 export default function RootLayout({

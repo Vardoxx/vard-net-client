@@ -1,13 +1,25 @@
 'use client'
 
 import { URL_PAGE } from '@/cfg/url.cfg'
-import Image from 'next/image'
+import { useProfile } from '@/hooks/useProfile'
+import { authService } from '@/services/auth.service'
+import { Avatar } from '@mui/material'
 import Link from 'next/link'
-import { PropsWithChildren } from 'react'
+import { PropsWithChildren, useEffect, useState } from 'react'
 import LayoutSortingBar from '../sorting-bar/SortingBar'
 import CustomBtn from '../ui/Btn'
+import StringAvatar from '../ui/StringAvatar'
 
 const GeneralLayout = ({ children }: PropsWithChildren) => {
+	const { data } = useProfile()
+
+	const [name, setName] = useState<string>('')
+
+	useEffect(() => {
+		setName(data?.user.name || '')
+		// console.log(data?.name)
+	}, [data])
+
 	return (
 		<>
 			<header className='flex items-center justify-center w-full min-h-20 sticky top-0 left-0 bg-white shadow-md shadow-black z-50'>
@@ -17,14 +29,12 @@ const GeneralLayout = ({ children }: PropsWithChildren) => {
 						<CustomBtn title='Создать новость' />
 					</Link>
 
-					<Link href={URL_PAGE.PROFILE}>
-						<Image
-							style={{ borderRadius: '50%' }}
-							src={'/file.svg'}
-							alt='ava'
-							width={100}
-							height={100}
-						/>
+					<Link onClick={() => authService.logout()} href={URL_PAGE.PROFILE}>
+						{data?.user.avatar ? (
+							<Avatar alt='avatar' src={data!.user.avatar} />
+						) : (
+							<StringAvatar name={name} fontSize={30} width={50} height={50} />
+						)}
 					</Link>
 				</nav>
 			</header>

@@ -2,11 +2,11 @@
 
 import { URL_PAGE } from '@/cfg/url.cfg'
 import CustomBtn from '@/components/ui/Btn'
-import CustomInput from '@/components/ui/Input'
 import { emailRegex, lettersRegex } from '@/constants/regex.constants'
 import { authService } from '@/services/auth.service'
 import { IRegisterForm } from '@/types/auth.types'
 import { InputType } from '@/types/input.types'
+import { TextField } from '@mui/material'
 import { useMutation } from '@tanstack/react-query'
 import { useRouter } from 'next/navigation'
 import { useState } from 'react'
@@ -91,11 +91,28 @@ const Register = () => {
 						pattern: { value: lettersRegex, message: 'Только буквы' },
 					}}
 					render={({ field }) => (
-						<CustomInput
+						<TextField
 							{...field}
-							placeholder='Имя'
-							type='text'
-							dirty={errors.name === undefined ? 'none' : '2px solid red'}
+							label='Имя'
+							fullWidth
+							size='medium'
+							sx={
+								errors.name
+									? {
+											'& .MuiOutlinedInput-root': {
+												'& fieldset': {
+													borderColor: 'red', // Цвет рамки по умолчанию
+												},
+												'&:hover fieldset': {
+													borderColor: 'red', // Цвет при наведении
+												},
+												'&.Mui-focused fieldset': {
+													borderColor: 'red', // Цвет при фокусе
+												},
+											},
+									  }
+									: null
+							}
 						/>
 					)}
 				/>
@@ -118,11 +135,28 @@ const Register = () => {
 						pattern: { value: emailRegex, message: 'Почта не корректна!' },
 					}}
 					render={({ field }) => (
-						<CustomInput
+						<TextField
 							{...field}
-							placeholder='Почта'
-							type='text'
-							dirty={errors.email === undefined ? 'none' : '2px solid red'}
+							label='Почта'
+							fullWidth
+							size='medium'
+							sx={
+								errors.email
+									? {
+											'& .MuiOutlinedInput-root': {
+												'& fieldset': {
+													borderColor: 'red', // Цвет рамки по умолчанию
+												},
+												'&:hover fieldset': {
+													borderColor: 'red', // Цвет при наведении
+												},
+												'&.Mui-focused fieldset': {
+													borderColor: 'red', // Цвет при фокусе
+												},
+											},
+									  }
+									: null
+							}
 						/>
 					)}
 				/>
@@ -146,11 +180,29 @@ const Register = () => {
 						},
 					}}
 					render={({ field }) => (
-						<CustomInput
+						<TextField
 							{...field}
-							placeholder='Пароль'
+							label='Пароль'
+							fullWidth
+							size='medium'
 							type={showPass}
-							dirty={errors.password === undefined ? 'none' : '2px solid red'}
+							sx={
+								errors.password
+									? {
+											'& .MuiOutlinedInput-root': {
+												'& fieldset': {
+													borderColor: 'red', // Цвет рамки по умолчанию
+												},
+												'&:hover fieldset': {
+													borderColor: 'red', // Цвет при наведении
+												},
+												'&.Mui-focused fieldset': {
+													borderColor: 'red', // Цвет при фокусе
+												},
+											},
+									  }
+									: null
+							}
 						/>
 					)}
 				/>
@@ -178,12 +230,27 @@ const Register = () => {
 						},
 					}}
 					render={({ field }) => (
-						<CustomInput
+						<TextField
 							{...field}
-							placeholder='Повторите пароль'
-							type='password'
-							dirty={
-								errors.repeatPassword === undefined ? 'none' : '2px solid red'
+							label='Повторите пароль'
+							fullWidth
+							size='medium'
+							sx={
+								errors.repeatPassword
+									? {
+											'& .MuiOutlinedInput-root': {
+												'& fieldset': {
+													borderColor: 'red', // Цвет рамки по умолчанию
+												},
+												'&:hover fieldset': {
+													borderColor: 'red', // Цвет при наведении
+												},
+												'&.Mui-focused fieldset': {
+													borderColor: 'red', // Цвет при фокусе
+												},
+											},
+									  }
+									: null
 							}
 						/>
 					)}

@@ -8,13 +8,15 @@ export interface IRegisterForm extends ILoginForm {
 	repeatPassword: string
 }
 
+export interface IProfile {
+	user: IUser
+}
+
 export interface IUser {
 	id: number
+	avatar: string
 	email: string
-
-	workInterval?: number
-	breakInterval?: number
-	intervalsCount?: number
+	name: string
 }
 
 export interface ILoginResponse {

@@ -2,7 +2,7 @@ import type { Metadata } from 'next'
 import News from './News'
 
 export const metadata: Metadata = {
-	title: 'Main',
+	title: 'Новости',
 	description: '',
 }
 

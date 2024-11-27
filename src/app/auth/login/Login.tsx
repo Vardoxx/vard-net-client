@@ -2,11 +2,11 @@
 
 import { URL_PAGE } from '@/cfg/url.cfg'
 import CustomBtn from '@/components/ui/Btn'
-import Input from '@/components/ui/Input'
 import { emailRegex } from '@/constants/regex.constants'
 import { authService } from '@/services/auth.service'
 import { ILoginForm } from '@/types/auth.types'
 import { InputType } from '@/types/input.types'
+import { TextField } from '@mui/material'
 import { useMutation } from '@tanstack/react-query'
 import { useRouter } from 'next/navigation'
 import { useState } from 'react'
@@ -78,11 +78,28 @@ const Login = () => {
 						pattern: { value: emailRegex, message: 'Почта не корректна!' },
 					}}
 					render={({ field }) => (
-						<Input
+						<TextField
 							{...field}
-							placeholder='Почта'
-							type='text'
-							dirty={errors.email === undefined ? 'none' : '2px solid red'}
+							label='Почта'
+							fullWidth
+							size='medium'
+							sx={
+								errors.email
+									? {
+											'& .MuiOutlinedInput-root': {
+												'& fieldset': {
+													borderColor: 'red', // Цвет рамки по умолчанию
+												},
+												'&:hover fieldset': {
+													borderColor: 'red', // Цвет при наведении
+												},
+												'&.Mui-focused fieldset': {
+													borderColor: 'red', // Цвет при фокусе
+												},
+											},
+									  }
+									: null
+							}
 						/>
 					)}
 				/>
@@ -105,11 +122,28 @@ const Login = () => {
 						},
 					}}
 					render={({ field }) => (
-						<Input
+						<TextField
 							{...field}
-							placeholder='Пароль'
-							type={showPass}
-							dirty={errors.password === undefined ? 'none' : '2px solid red'}
+							label='Пароль'
+							fullWidth
+							size='medium'
+							sx={
+								errors.password
+									? {
+											'& .MuiOutlinedInput-root': {
+												'& fieldset': {
+													borderColor: 'red', // Цвет рамки по умолчанию
+												},
+												'&:hover fieldset': {
+													borderColor: 'red', // Цвет при наведении
+												},
+												'&.Mui-focused fieldset': {
+													borderColor: 'red', // Цвет при фокусе
+												},
+											},
+									  }
+									: null
+							}
 						/>
 					)}
 				/>

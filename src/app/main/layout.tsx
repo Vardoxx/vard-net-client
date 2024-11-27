@@ -7,7 +7,7 @@ export const metadata: Metadata = {
 		default: SITE_NAME,
 		template: `%s | ${SITE_NAME}`,
 	},
-	description: 'Best online cinema in the world',
+	description: 'Свежайшие новости от VARD.net',
 }
 
 export default function MainLayout({

@@ -3,6 +3,7 @@
 import NewCard from '@/components/new-card/NewCard'
 import useSortNews from '@/hooks/useSortNews'
 import { newService } from '@/services/new.service'
+import { Grid2 } from '@mui/material'
 import { useQuery } from '@tanstack/react-query'
 
 const News = () => {
@@ -17,7 +18,7 @@ const News = () => {
 	if (isError) return <div>Error loading news</div>
 
 	return (
-		<>
+		<Grid2 container spacing={2} justifyContent='center'>
 			{sortedArray?.map(e => (
 				<NewCard
 					key={e.id}
@@ -28,7 +29,7 @@ const News = () => {
 					description={e.description}
 				/>
 			))}
-		</>
+		</Grid2>
 	)
 }
 

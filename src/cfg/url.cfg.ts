@@ -4,10 +4,10 @@ class URL {
 
 	MAIN = `${this.root}main`
 	NEWS_MAKER = `${this.MAIN}/news_maker`
+	PROFILE = `${this.MAIN}/profile`
 
 	REGISTER = `${this.authRoot}/register`
 	LOGIN = `${this.authRoot}/login`
-	PROFILE = `${this.authRoot}/profile`
 }
 
 export const URL_PAGE = new URL()
