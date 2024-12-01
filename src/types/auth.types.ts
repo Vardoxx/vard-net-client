@@ -13,10 +13,11 @@ export interface IProfile {
 }
 
 export interface IUser {
-	id: number
-	avatar: string
-	email: string
-	name: string
+	id?: number
+	avatar?: string | File[]
+	email?: string
+	name?: string
+	role?: string
 }
 
 export interface ILoginResponse {
@@ -28,6 +29,11 @@ export interface IRegisterResponse {
 	id: number
 	name: string
 	email: string
+}
+
+export interface IGetToAccessDataChange {
+	email: string
+	password: string
 }
 
 export type TypeUserForm = Omit<IUser, 'id'> & { password?: string }

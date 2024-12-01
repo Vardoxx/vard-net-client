@@ -81,7 +81,7 @@ const Register = () => {
 					rules={{
 						required: 'Поле обязательно!',
 						minLength: {
-							value: 6,
+							value: 2,
 							message: 'Минимальное кол-во символов: 6!',
 						},
 						maxLength: {

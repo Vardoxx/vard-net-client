@@ -40,7 +40,7 @@ const Login = () => {
 		mutationFn: (data: ILoginForm) => authService.login(data),
 		onSuccess() {
 			toast.success('Успешный вход')
-			router.push(URL_PAGE.MAIN)
+			router.push(URL_PAGE.NEWS)
 		},
 		onError() {
 			toast.error('Пользователя с таким email не существует')

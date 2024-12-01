@@ -10,6 +10,7 @@ const News = () => {
 	const { data, isError, isLoading } = useQuery({
 		queryKey: ['getNew'],
 		queryFn: () => newService.getAll(),
+		refetchInterval: 300000,
 	})
 
 	const sortedArray = useSortNews(data!)

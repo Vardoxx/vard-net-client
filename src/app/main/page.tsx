@@ -1,11 +1,14 @@
 import type { Metadata } from 'next'
-import News from './News'
 
 export const metadata: Metadata = {
-	title: 'Новости',
+	title: '',
 	description: '',
 }
 
 export default function MainPage() {
-	return <News />
+	return (
+		<div>
+			<div></div>
+		</div>
+	)
 }

@@ -1,10 +1,12 @@
 class URL {
 	root = '/'
 	authRoot = `${this.root}auth`
+	mainRoot = `${this.root}main`
 
-	MAIN = `${this.root}main`
-	NEWS_MAKER = `${this.MAIN}/news_maker`
-	PROFILE = `${this.MAIN}/profile`
+	NEWS = `${this.root}main/news`
+
+	NEWS_MAKER = `${this.mainRoot}/news_maker`
+	PROFILE = `${this.mainRoot}/profile`
 
 	REGISTER = `${this.authRoot}/register`
 	LOGIN = `${this.authRoot}/login`

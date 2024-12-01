@@ -7,7 +7,6 @@ function stringToColor(string: string) {
 	let hash = 0
 	let i
 
-	/* eslint-disable no-bitwise */
 	for (i = 0; i < string.length; i += 1) {
 		hash = string.charCodeAt(i) + ((hash << 5) - hash)
 	}
@@ -18,7 +17,6 @@ function stringToColor(string: string) {
 		const value = (hash >> (i * 8)) & 0xff
 		color += `00${value.toString(16)}`.slice(-2)
 	}
-	/* eslint-enable no-bitwise */
 
 	return color
 }
@@ -32,12 +30,13 @@ function stringAvatar(name: string) {
 	}
 }
 
-const StringAvatar: React.FC<{
+const UserAvatar: React.FC<{
 	name?: string
+	avatar?: string
 	width?: number
 	height?: number
 	fontSize?: number
-}> = ({ name, width = 40, height = 40, fontSize = 12 }) => {
+}> = ({ name, width, height, fontSize, avatar }) => {
 	const [isLoading, setIsLoading] = useState(true)
 
 	useEffect(() => {
@@ -60,18 +59,34 @@ const StringAvatar: React.FC<{
 		)
 	}
 
-	return (
-		<Stack direction='row' spacing={2}>
-			<Avatar
-				style={{
-					width: `${width}px`,
-					height: `${height}px`,
-					fontSize: `${fontSize}px`,
-				}}
-				{...stringAvatar(name!)}
-			/>
-		</Stack>
-	)
+	if (!avatar) {
+		return (
+			<Stack direction='row' spacing={2}>
+				<Avatar
+					style={{
+						width: `${width}px`,
+						height: `${height}px`,
+						fontSize: `${fontSize}px`,
+					}}
+					{...stringAvatar(name!)}
+				/>
+			</Stack>
+		)
+	}
+	if (avatar) {
+		return (
+			<Stack direction='row' spacing={2}>
+				<Avatar
+					style={{
+						width: `${width}px`,
+						height: `${height}px`,
+						fontSize: `${fontSize}px`,
+					}}
+					src={avatar}
+				/>
+			</Stack>
+		)
+	}
 }
 
-export default StringAvatar
+export default UserAvatar

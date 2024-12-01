@@ -1,4 +1,3 @@
-import GeneralLayout from '@/components/layout/GeneralLayout'
 import { SITE_NAME } from '@/constants/seo.constants'
 import { Metadata } from 'next'
 
@@ -15,5 +14,5 @@ export default function MainLayout({
 }: Readonly<{
 	children: React.ReactNode
 }>) {
-	return <GeneralLayout>{children}</GeneralLayout>
+	return <>{children}</>
 }

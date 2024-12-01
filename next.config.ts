@@ -7,7 +7,12 @@ const nextConfig: NextConfig = {
 		return [
 			{
 				source: URL_PAGE.root,
-				destination: URL_PAGE.MAIN,
+				destination: URL_PAGE.NEWS,
+				permanent: true,
+			},
+			{
+				source: URL_PAGE.mainRoot,
+				destination: URL_PAGE.NEWS,
 				permanent: true,
 			},
 		]

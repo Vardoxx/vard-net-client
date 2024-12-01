@@ -62,7 +62,7 @@ const NewCreator = () => {
 				'Новость создана и появится на главной странице, как только её рассмотрит администрация'
 			)
 			reset()
-			router.push(URL_PAGE.MAIN)
+			router.push(URL_PAGE.NEWS)
 		},
 		onError() {
 			toast.error('Ошибка при создании')

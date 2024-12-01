@@ -44,4 +44,12 @@ export const authService = {
 
 		return res
 	},
+
+	async getAccessToDataChange(data: { password: string; email: string }) {
+		const res = await axiosClassic.post<boolean>(
+			'/auth/getAccessToDataChange',
+			data
+		)
+		return res
+	},
 }

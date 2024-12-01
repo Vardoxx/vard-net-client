@@ -7,5 +7,9 @@ export const metadata: Metadata = {
 }
 
 export default function NewsMakerPage() {
-	return <NewCreator />
+	return (
+		<div className='wrapper'>
+			<NewCreator />
+		</div>
+	)
 }
