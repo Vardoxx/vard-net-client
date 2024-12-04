@@ -82,7 +82,7 @@ const UserAvatar: React.FC<{
 						height: `${height}px`,
 						fontSize: `${fontSize}px`,
 					}}
-					src={avatar}
+					src={`http://localhost:7864/${avatar}`}
 				/>
 			</Stack>
 		)

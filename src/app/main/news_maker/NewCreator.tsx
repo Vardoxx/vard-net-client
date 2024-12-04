@@ -48,9 +48,7 @@ const NewCreator = () => {
 	const onSubmit = (data: INewRequire) => {
 		if (data.tag.length !== 0) {
 			clearErrors('tag')
-			console.log(data.tag.length)
 		}
-		console.log(data)
 		mutate({ ...data, img: data.img })
 	}
 

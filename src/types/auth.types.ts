@@ -14,7 +14,7 @@ export interface IProfile {
 
 export interface IUser {
 	id?: number
-	avatar?: string | File[]
+	avatar?: File[] | string | null
 	email?: string
 	name?: string
 	role?: string

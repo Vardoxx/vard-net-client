@@ -11,13 +11,13 @@ import ListItemIcon from '@mui/material/ListItemIcon'
 import ListItemText from '@mui/material/ListItemText'
 import { useRouter } from 'next/navigation'
 import { useState } from 'react'
-import { FaRegUserCircle } from 'react-icons/fa'
+import { FaRegUserCircle, FaRubleSign } from 'react-icons/fa'
 import { IoNewspaper } from 'react-icons/io5'
 import { SiBlueprint } from 'react-icons/si'
 import { VscThreeBars } from 'react-icons/vsc'
 
 const SideBar = () => {
-	const router = useRouter().push
+	const redirect = useRouter().push
 
 	const [open, setOpen] = useState(false)
 
@@ -37,14 +37,17 @@ const SideBar = () => {
 				if (i === 0) {
 					return <IoNewspaper />
 				}
+				if (i === 1) {
+					return <SiBlueprint />
+				}
 				break
+
 			case 'bottom':
 				if (i === 0) {
 					return <FaRegUserCircle />
 				}
-
 				if (i === 1) {
-					return <SiBlueprint />
+					return <FaRubleSign />
 				}
 				break
 		}
@@ -54,16 +57,15 @@ const SideBar = () => {
 		switch (position) {
 			case 'top':
 				if (i === 0) {
-					router(URL_PAGE.NEWS)
+					redirect(URL_PAGE.NEWS)
+				}
+				if (i === 1) {
+					redirect(URL_PAGE.NEWS_MAKER)
 				}
 				break
 			case 'bottom':
 				if (i === 0) {
-					router(URL_PAGE.PROFILE)
-				}
-
-				if (i === 1) {
-					router(URL_PAGE.NEWS_MAKER)
+					redirect(URL_PAGE.PROFILE)
 				}
 				break
 		}
@@ -72,7 +74,7 @@ const SideBar = () => {
 	const DrawerList = (
 		<Box sx={{ width: 250 }} role='presentation' onClick={toggleDrawer(false)}>
 			<List>
-				{['Новости'].map((e, i) => (
+				{['Новости', 'Верстак'].map((e, i) => (
 					<ListItem key={e} disablePadding disableGutters>
 						<ListItemButton onClick={() => routing({ i, position: 'top' })}>
 							<ListItemIcon>
@@ -85,7 +87,7 @@ const SideBar = () => {
 			</List>
 			<Divider />
 			<List>
-				{['Профиль', 'Верстак'].map((e, i) => (
+				{['Профиль', 'Подписка'].map((e, i) => (
 					<ListItem key={e} disablePadding>
 						<ListItemButton onClick={() => routing({ i, position: 'bottom' })}>
 							<ListItemIcon>

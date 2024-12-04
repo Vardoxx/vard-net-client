@@ -1,6 +1,5 @@
 'use client'
 
-import SideBar from '@/components/layout/SIdeBar'
 import WidgetProvider from '@/modules/WidgetProvider.module'
 import { store } from '@/store/store'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
@@ -23,7 +22,6 @@ export function Providers({ children }: PropsWithChildren) {
 	return (
 		<Provider store={store}>
 			<QueryClientProvider client={client}>
-				<SideBar />
 				<WidgetProvider />
 				{children}
 				<Toaster

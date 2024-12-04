@@ -1,4 +1,4 @@
-import { IProfile, TypeUserForm } from '@/types/auth.types'
+import { IProfile, IUser } from '@/types/auth.types'
 
 import { axiosWithAuth } from '@/api/interceptors'
 
@@ -8,9 +8,20 @@ class UserService {
 		return response.data
 	}
 
-	async update(data: TypeUserForm) {
-		const response = await axiosWithAuth.put('/user/profile', data)
-		return response.data
+	async update(data: IUser) {
+		const formData = new FormData()
+		formData.append('avatar', data.avatar![0])
+
+		formData.append('email', data.email || '')
+		formData.append('name', data.name || '')
+
+		const res = await axiosWithAuth.put<IUser>(`/user/profile`, formData, {
+			headers: {
+				'Content-Type': 'multipart/form-data',
+			},
+		})
+
+		return res.data
 	}
 }
 

@@ -1,7 +1,6 @@
 /* eslint-disable @next/next/no-img-element */
 import { INewCard } from '@/types/new-card.types'
-import { Avatar } from '@mui/material'
-import StringAvatar from '../ui/UserAvatar'
+import UserAvatar from '../ui/UserAvatar'
 
 const NewCard: React.FC<INewCard> = ({
 	imgUrl,
@@ -36,16 +35,12 @@ const NewCard: React.FC<INewCard> = ({
 
 			<div className='card__author-container'>
 				<div className='card__author'>
-					{author.avatar ? (
-						<Avatar style={{ width: '30px' }} src={author.avatar} />
-					) : (
-						<StringAvatar
-							name={author.name}
-							width={30}
-							height={30}
-							fontSize={17}
-						/>
-					)}
+					<UserAvatar
+						width={30}
+						height={30}
+						name={author.name}
+						avatar={author.avatar}
+					/>
 					{author.name}
 				</div>
 			</div>
