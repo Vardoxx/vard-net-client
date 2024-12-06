@@ -3,6 +3,7 @@
 import NewCard from '@/components/new-card/NewCard'
 import useSortNews from '@/hooks/useSortNews'
 import { newService } from '@/services/new.service'
+import { formatDate } from '@/utils/formatDate'
 import { Grid2 } from '@mui/material'
 import { useQuery } from '@tanstack/react-query'
 
@@ -28,6 +29,7 @@ const News = () => {
 					tag={e.tag}
 					author={e.author}
 					description={e.description}
+					createdAt={formatDate(e.createdAt)}
 				/>
 			))}
 		</Grid2>

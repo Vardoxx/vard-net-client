@@ -8,6 +8,7 @@ const NewCard: React.FC<INewCard> = ({
 	description,
 	tag,
 	author,
+	createdAt,
 }) => {
 	return (
 		<div className='card'>
@@ -33,15 +34,18 @@ const NewCard: React.FC<INewCard> = ({
 				))}
 			</div>
 
-			<div className='card__author-container'>
-				<div className='card__author'>
-					<UserAvatar
-						width={30}
-						height={30}
-						name={author.name}
-						avatar={author.avatar}
-					/>
-					{author.name}
+			<div className='flex w-full h-min items-center justify-between'>
+				{createdAt}
+				<div className='card__author-container'>
+					<div className='card__author'>
+						<UserAvatar
+							width={30}
+							height={30}
+							name={author.name}
+							avatar={author.avatar}
+						/>
+						{author.name}
+					</div>
 				</div>
 			</div>
 		</div>

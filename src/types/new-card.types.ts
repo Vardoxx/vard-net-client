@@ -4,6 +4,7 @@ export interface INewCard {
 	description: string
 	tag: string[]
 	author: IAuthor
+	createdAt: string
 }
 
 export interface IAuthor {

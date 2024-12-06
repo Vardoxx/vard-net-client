@@ -7,6 +7,7 @@ export interface INewResponse {
 	authorId: string
 	tag: string[]
 	checkStatus: CheckStatus
+	createdAt: Date
 }
 
 export type TTag = 'популярное' | 'политика' | 'игры' | 'блогеры' | 'it'

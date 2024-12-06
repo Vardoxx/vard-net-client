@@ -32,7 +32,7 @@ function stringAvatar(name: string) {
 
 const UserAvatar: React.FC<{
 	name?: string
-	avatar?: string
+	avatar?: string | null
 	width?: number
 	height?: number
 	fontSize?: number
