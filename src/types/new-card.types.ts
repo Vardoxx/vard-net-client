@@ -3,7 +3,8 @@ export interface INewCard {
 	title: string
 	description: string
 	tag: string[]
-	author: IAuthor
+	authorAvatar: string
+	authorName: string
 	createdAt: string
 }
 

@@ -11,7 +11,7 @@ const useSortNews = (array: INewResponse[]): INewResponse[] => {
 
 	if (!array) return []
 
-	let sortingArray = [...array.filter(e => e.checkStatus === 'processed')]
+	let sortingArray = [...array.filter(e => e.checkStatus === 'PROCESSED')]
 
 	if (sortByTag) {
 		switch (sortByTag) {

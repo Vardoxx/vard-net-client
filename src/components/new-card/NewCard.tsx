@@ -7,7 +7,8 @@ const NewCard: React.FC<INewCard> = ({
 	title,
 	description,
 	tag,
-	author,
+	authorName,
+	authorAvatar,
 	createdAt,
 }) => {
 	return (
@@ -41,10 +42,10 @@ const NewCard: React.FC<INewCard> = ({
 						<UserAvatar
 							width={30}
 							height={30}
-							name={author.name}
-							avatar={author.avatar}
+							name={authorName}
+							avatar={authorAvatar}
 						/>
-						{author.name}
+						{authorName}
 					</div>
 				</div>
 			</div>

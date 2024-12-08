@@ -1,11 +1,30 @@
 import { axiosClassic, axiosWithAuth } from '@/api/interceptors'
-import { INewRequire, INewResponse } from '@/types/new.types'
+import { INewRequire, INewResponse, TTag } from '@/types/new.types'
 
 export const newService = {
-	async getAll() {
-		const res = await axiosClassic.get<INewResponse[]>(`/new`)
+	async getNews(
+		type: 'tag' | 'title' | 'all',
+		tag?: TTag,
+		title?: string | number
+	) {
+		function typeController() {
+			switch (type) {
+				case 'all':
+					return '/new'
 
-		return res.data
+				case 'tag':
+					if (!tag) return '/new'
+					return `/new/by-tag/${tag}`
+
+				case 'title':
+					if (!title) return '/new'
+					return `/new/by-title/${title}`
+			}
+		}
+
+		const res = await axiosClassic.get<INewResponse[]>(typeController())
+
+		return res.data || []
 	},
 
 	async create(data: INewRequire, img: File) {

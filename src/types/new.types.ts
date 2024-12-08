@@ -1,5 +1,6 @@
 export interface INewResponse {
-	author: IAuthor
+	authorName: string
+	authorAvatar: string
 	id: number
 	imgUrl: string
 	title: string
@@ -24,4 +25,4 @@ export interface IAuthor {
 	name: string
 }
 
-export type CheckStatus = 'processed' | 'dismiss' | 'confirmed'
+export type CheckStatus = 'PROCESSED' | 'DISMISS' | 'CONFIRMED'

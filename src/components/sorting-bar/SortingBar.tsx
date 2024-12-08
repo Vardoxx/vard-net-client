@@ -2,11 +2,20 @@
 
 import sortingBarItems from '@/constants/sorting-bar.constants'
 import { sortByName, sortByTag } from '@/store/slices/sort.slice'
-import { ChangeEvent } from 'react'
+import { ChangeEvent, useEffect, useState } from 'react'
 import { useDispatch } from 'react-redux'
 
 const SortingBar = () => {
 	const dispatch = useDispatch()
+
+	const [isTitle, setTitle] = useState<string>('')
+
+	useEffect(() => {
+		if (!isTitle) dispatch(sortByName(''))
+
+		console.log(isTitle)
+		// eslint-disable-next-line react-hooks/exhaustive-deps
+	}, [isTitle])
 
 	return (
 		<>
@@ -23,15 +32,21 @@ const SortingBar = () => {
 				))}
 			</div>
 
-			<div className='max-w-full'>
+			<div className='max-w-full relative'>
 				<input
 					type='text'
-					className='w-full text-sm bg-slate-200 p-2 rounded-3xl'
+					className='w-full text-sm bg-slate-200 p-2 rounded-tl-3xl rounded-bl-3xl'
 					placeholder='Поиск по названию...'
 					onChange={(e: ChangeEvent<HTMLInputElement>) =>
-						dispatch(sortByName(e.target.value))
+						setTitle(e.target.value)
 					}
 				/>
+				<button
+					onClick={() => dispatch(sortByName(isTitle))}
+					className='bg-white p-2 text-sm absolute transition-all rounded-tr-full rounded-br-full hover:bg-blue-600 hover:text-white'
+				>
+					Найти
+				</button>
 			</div>
 		</>
 	)
