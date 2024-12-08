@@ -52,7 +52,7 @@ const Profile = () => {
 		register,
 		handleSubmit,
 
-		formState: { errors, isValid },
+		formState: { errors },
 	} = useForm<IUser>({
 		defaultValues: {
 			name,
@@ -61,10 +61,6 @@ const Profile = () => {
 		values: data?.user,
 		mode: 'onSubmit',
 	})
-
-	useEffect(() => {
-		console.log(isValid)
-	}, [isValid])
 
 	const [logout] = useLogout(true)
 
@@ -122,7 +118,6 @@ const Profile = () => {
 							/>
 							<input
 								{...register('avatar', {
-									required: 'Выберите картинку',
 									validate: value => validateFile(value as File[]),
 								})}
 								style={{ opacity: '0', width: 0 }}
@@ -259,7 +254,6 @@ const Profile = () => {
 									variant='contained'
 									endIcon={<GiConfirmed />}
 									color='success'
-									onClick={() => console.log('Clicked')}
 								>
 									Подтвердить
 								</Button>

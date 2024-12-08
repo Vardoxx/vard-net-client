@@ -32,7 +32,7 @@ const SortingBar = () => {
 				))}
 			</div>
 
-			<div className='max-w-full relative'>
+			<div className='w-60 relative'>
 				<input
 					type='text'
 					className='w-full text-sm bg-slate-200 p-2 rounded-tl-3xl rounded-bl-3xl'

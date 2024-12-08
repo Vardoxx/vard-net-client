@@ -1,8 +1,9 @@
 /* eslint-disable @next/next/no-img-element */
 import { INewCard } from '@/types/new-card.types'
-import UserAvatar from '../ui/UserAvatar'
+import { FC } from 'react'
+import UserAvatar from './UserAvatar'
 
-const NewCard: React.FC<INewCard> = ({
+const NewCard: FC<INewCard> = ({
 	imgUrl,
 	title,
 	description,

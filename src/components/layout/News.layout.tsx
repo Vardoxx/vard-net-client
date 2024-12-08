@@ -1,7 +1,7 @@
 'use client'
 
 import { PropsWithChildren } from 'react'
-import LayoutSortingBar from '../sorting-bar/SortingBar'
+import LayoutSortingBar from '../SortingBar'
 
 const NewsLayout = ({ children }: PropsWithChildren) => {
 	return (

@@ -1,7 +1,7 @@
 import { Skeleton } from '@mui/material'
 import Avatar from '@mui/material/Avatar'
 import Stack from '@mui/material/Stack'
-import { useEffect, useState } from 'react'
+import { FC, useEffect, useState } from 'react'
 
 function stringToColor(string: string) {
 	let hash = 0
@@ -30,7 +30,7 @@ function stringAvatar(name: string) {
 	}
 }
 
-const UserAvatar: React.FC<{
+const UserAvatar: FC<{
 	name?: string
 	avatar?: string | null
 	width?: number

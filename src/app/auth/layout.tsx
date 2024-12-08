@@ -1,4 +1,4 @@
-import AuthLayout from '@/components/layout/AuthLayout'
+import AuthLayout from '@/components/layout/Auth.layout'
 import { SITE_NAME } from '@/constants/seo.constants'
 import { Metadata } from 'next'
 

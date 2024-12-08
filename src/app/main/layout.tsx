@@ -1,4 +1,4 @@
-import SideBar from '@/components/layout/SIdeBar'
+import SideBar from '@/components/layout/SIdebar.layout'
 import { SITE_NAME } from '@/constants/seo.constants'
 import { Metadata } from 'next'
 

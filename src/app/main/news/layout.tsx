@@ -1,4 +1,4 @@
-import NewsLayout from '@/components/layout/NewsLayout'
+import NewsLayout from '@/components/layout/News.layout'
 
 export default function MainLayout({
 	children,

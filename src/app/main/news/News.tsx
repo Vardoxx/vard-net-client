@@ -1,6 +1,7 @@
 'use client'
 
-import NewCard from '@/components/new-card/NewCard'
+import NewCard from '@/components/ui/NewCard'
+import SkeletonLoaders from '@/components/ui/SkeletonLaders'
 import { newService } from '@/services/new.service'
 import { RootState } from '@/store/store'
 import { TTag } from '@/types/new.types'
@@ -38,7 +39,14 @@ const News = () => {
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [title])
 
-	if (isLoading) return <div>Loading...</div>
+	if (isLoading) {
+		return (
+			<Grid2 container spacing={2} justifyContent='center'>
+				<SkeletonLoaders count={20} />
+			</Grid2>
+		)
+	}
+
 	if (isError) return <div>Error loading news</div>
 	if (!data?.length) return <NotFound />
 
